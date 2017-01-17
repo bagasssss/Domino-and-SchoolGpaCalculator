@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="ITRex">
+<head>
+	<title>ITRex App</title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <script src="Scripts/jquery-1.10.2.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Config/route-config.js"></script>
+    <script src="SchoolGpaCalculator/schoolGpaCalculator.js"></script>
+    <script src="SchoolGpaCalculator/Services/gpaService.js"></script>
+    <script src="SchoolGpaCalculator/Controllers/gpaControllers.js"></script>
+    <script src="SchoolGpaCalculator/Directives/gpaDirectives.js"></script>
+
+    <script>
+    	angular.module("ITRex", ["config", "gpaModule"])
+    </script>
+</head>
+<body>
+	<div class="container">
+
+		<div class="masthead">
+			<div role="navigator">
+				<ul class="nav nav-justified">
+					<li> <a ui-sref="domino"> Domino </a></li>
+					<li> <a ui-sref="schoolGpaCalculator"> School GPA Calculator </a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div ui-view>
+			
+		</div>
+	</div>
+</body>
+</html>

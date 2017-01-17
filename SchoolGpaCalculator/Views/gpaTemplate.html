@@ -1,0 +1,62 @@
+<!-- main gpa template -->
+
+
+
+<div class="container">
+  <h2>Average GPA:  {{ctrl.averageGPA}}</h2>
+  <ul class="nav nav-tabs">
+    <li ng-repeat="g in ctrl.grades">
+    	<a data-toggle="tab" href=#{{g.grade}} ng-click="ctrl.showGrid(g.id)">
+    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)">  x</b>
+    	</a>
+    </li>
+    <li><a ng-click="ctrl.addGrade()">+</a></li>
+    
+  </ul>
+
+  <div ng-repeat="g in ctrl.grades">
+  		
+  		<div ng-show="g.show">
+  		
+  		<div class="panel panel-body">
+  			Grade <input name="Grade Name" ng-model="g.grade">
+  		</div>
+
+		  <table class="table">
+		  		<thead>
+		  			<tr>
+		  				<th>Name</th>
+		  				<th>GPA</th>
+		  				<th></th>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  			<tr ng-repeat="students in g.students">
+		  				<td>
+		  					{{students.name}}
+		  				</td>
+		  				<td>
+		  					{{students.gpa}}
+		  				</td>
+		  				<td>
+		  					<a class="btn btn-default" ng-click="ctrl.deleteStudent(g.grade, students.name)">X</a>
+		  				</td>
+		  			</tr>
+		  			<tr>
+		  				<td>
+		  					<input type="text" name="Name" ng-model="newStudent.name">
+		  				</td>
+		  				<td>
+		  					<input type="number" name="GPA" ng-model="newStudent.gpa">
+		  				</td>
+		  				<td>
+		  					<a class="btn btn-default" ng-click="ctrl.addStudent(g.grade, newStudent)">add new</a>
+		  				</td>
+		  			</tr>
+		  		</tbody>
+			  </table>
+			 </div>
+	</div>
+</div>
+
+
