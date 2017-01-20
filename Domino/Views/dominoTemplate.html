@@ -1,0 +1,393 @@
+<!-- domino template -->
+domino template
+<div class="container">
+	<!-- div with domino display and functionality -->
+	<div class="col-md-8">
+		functionality
+		<!-- buttoms -->
+		<div class="my-top-buttons">
+			<button type="button" class="btn btn-default">left 90%</button>
+			<button type="button" class="btn btn-default" ng-click="dc.newDomino()">NEW DOMINO</button>
+			<button type="button" class="btn btn-default">right 90%</button>
+		</div>
+
+		<!-- MAIN DOMINO -->
+
+		<div class="">
+		<div class="full-domino " id="full-domino">
+			<!-- high part -->
+			<div>
+				<div class="main-square square-0">
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][0][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][0][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][0][2] === 1"></div>
+	                    </div>
+	                </div>
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][1][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][1][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][1][2] === 1"></div>
+	                    </div>
+	                </div>
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][2][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][2][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[0][2][2] === 1"></div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+			<!-- bottom part -->
+			<div>
+				<div class="main-square ">
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][0][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][0][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][0][2] === 1"></div>
+	                    </div>
+	                </div>
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][1][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][1][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][1][2] === 1"></div>
+	                    </div>
+	                </div>
+	                <div class="square-container">
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][2][0] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][2][1] === 1"></div>
+	                    </div>
+	                    <div class="circle-container">
+	                        <div class="main-circle" style="visibility: visible" ng-show="dc.domino[1][2][2] === 1"></div>
+	                    </div>
+	                </div>
+	            </div>
+			</div>
+		</div>
+		</div>
+
+		
+
+		<!-- SIZE CHANGER -->
+		<div class="">
+			<input id="ranger" type="range" min="1" max="100" value="50"/>
+<hr />
+		</div>
+
+		<!-- SPEED CHANGER -->
+		<div>
+			
+		</div>
+	</div>
+
+	<!-- div with range of choice -->
+	<div class="col-md-4">
+	range
+		<!-- sero -->
+		<div ng-click="dc.chooseParts(0)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+				<!-- one-->
+		<div ng-click="dc.chooseParts(1)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+						<!-- two-->
+		<div ng-click="dc.chooseParts(2)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+								<!-- three-->
+		<div ng-click="dc.chooseParts(3)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+								<!-- four-->
+		<div ng-click="dc.chooseParts(4)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+								<!-- five-->
+		<div ng-click="dc.chooseParts(5)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+								<!-- six-->
+		<div ng-click="dc.chooseParts(6)">
+			<div class="square square-0">
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+                <div class="square-container">
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: hidden"></div>
+                    </div>
+                    <div class="circle-container">
+                        <div class="circle" style="visibility: visible"></div>
+                    </div>
+                </div>
+            </div>
+		</div>
+
+
+
+
+
+
+	</div>
+</div>

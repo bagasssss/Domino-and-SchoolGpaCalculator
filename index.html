@@ -4,6 +4,7 @@
 	<title>ITRex App</title>
 	<meta charset="utf-8" />
     <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/angular.js"></script>
@@ -13,9 +14,11 @@
     <script src="SchoolGpaCalculator/Services/gpaService.js"></script>
     <script src="SchoolGpaCalculator/Controllers/gpaControllers.js"></script>
     <script src="SchoolGpaCalculator/Directives/gpaDirectives.js"></script>
+    <script src="Domino/domino.js"> </script>
+    <script src="Domino/Directives/dominoDirectives.js"> </script>
 
     <script>
-    	angular.module("ITRex", ["config", "gpaModule"])
+    	angular.module("ITRex", ["config", "gpaModule", "dominoModule"])
     </script>
 </head>
 <body>

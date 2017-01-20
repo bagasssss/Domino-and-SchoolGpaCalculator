@@ -64,9 +64,9 @@
 					};
 			};
 
-			vm.deleteStudent = function(grade, name) {
+			vm.deleteStudent = function(id, name) {
 				for(var i=0; i<vm.grades.length; i++){
-					if(vm.grades[i].grade === grade){
+					if(vm.grades[i].id === id){
 						for(var s=0; s<vm.grades[i].students.length; s++) {
 							if(vm.grades[i].students[s].name === name) {
 								vm.grades[i].students.splice(s,1);
@@ -81,9 +81,9 @@
 				};
 				calculateAvgGpa();
 			};
-			vm.addStudent = function(grade, newStudent) {
+			vm.addStudent = function(id, newStudent) {
 				for(var i=0; i<vm.grades.length; i++) {
-					if(vm.grades[i].grade === grade) {
+					if(vm.grades[i].id === id) {
 						vm.grades[i].students.push(newStudent);
 						break;
 					}

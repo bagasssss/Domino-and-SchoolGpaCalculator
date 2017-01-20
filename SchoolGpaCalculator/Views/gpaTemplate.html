@@ -3,15 +3,16 @@
 
 
 <div class="container">
+
   <h2>Average GPA:  {{ctrl.averageGPA}}</h2>
+
   <ul class="nav nav-tabs">
     <li ng-repeat="g in ctrl.grades">
     	<a data-toggle="tab" href=#{{g.grade}} ng-click="ctrl.showGrid(g.id)">
-    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)">  x</b>
+    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)" class="btn btn-default btn-xs">  x</b>
     	</a>
     </li>
     <li><a ng-click="ctrl.addGrade()">+</a></li>
-    
   </ul>
 
   <div ng-repeat="g in ctrl.grades">
@@ -39,7 +40,7 @@
 		  					{{students.gpa}}
 		  				</td>
 		  				<td>
-		  					<a class="btn btn-default" ng-click="ctrl.deleteStudent(g.grade, students.name)">X</a>
+		  					<a class="btn btn-default" ng-click="ctrl.deleteStudent(g.id, students.name)">X</a>
 		  				</td>
 		  			</tr>
 		  			<tr>
@@ -50,7 +51,7 @@
 		  					<input type="number" name="GPA" ng-model="newStudent.gpa">
 		  				</td>
 		  				<td>
-		  					<a class="btn btn-default" ng-click="ctrl.addStudent(g.grade, newStudent)">add new</a>
+		  					<a class="btn btn-default" ng-click="ctrl.addStudent(g.id, newStudent)">add new</a>
 		  				</td>
 		  			</tr>
 		  		</tbody>
