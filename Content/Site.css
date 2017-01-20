@@ -29,6 +29,15 @@
     width: 16px;
     padding: 10px;
     vertical-align: middle;
+    cursor: pointer;
+}
+.main-circle-container {
+    display: table-cell;
+    margin: 0 auto;
+    height: 46px;
+    width: 46px;
+    padding: 10px;
+    vertical-align: middle;
 }
 
 .circle {
@@ -47,6 +56,7 @@
     width: 150px;
     height: 150px;
     text-align: center;
+    border: 1px solid #ccc;;
 }
 
 .main-circle {
@@ -59,12 +69,12 @@
     margin: 0 auto;
 }
 
-.full-domino {
-	width: 155px;
-    height: 310px;
-    /*margin: 0 auto;*/
+/*rotation*/
+#full-domino {
+	transition: 300ms ease all;
+	transform: rotate(0deg);
 }
 
-/*.my-top-buttons {
-	margin: auto;
-}*/
+
+
+

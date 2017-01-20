@@ -5,10 +5,25 @@
 		.directive("dominoDirective", function(){
 			return {
 				restrict: "E",
-				templateUrl: "Domino/Views/dominoTemplate.html",
+				templateUrl: "Domino/Views/dominoTemplate2.html",
 				controller: function() {
 					var vm=this;
+
+					//size range attributes
+					vm.range = 50;
+					vm.minRange = 30;
+					vm.maxRange = 70;
+
+					/*ROTATE attributes*/
+					vm.rotateDegree = 0;
+					vm.rotateSpeed = 250;
+					vm.minRotateSpeed = 10;
+					vm.maxRotateSpeed = 5000;
+
+
+
 					vm.domino = [[[0,0,1],[0,1,0],[1,0,0]],[[0,0,1],[0,1,0],[1,0,0]]];
+					
 					vm.newDomino = function() {
 						vm.domino = [];
 						console.log("domino empty: "+ vm.domino);
@@ -58,34 +73,25 @@
 							}
 						};
 
+
 					vm.rotateLeft = function () {
-
-
+						console.log("rotate left");
+						vm.rotateDegree = vm.rotateDegree - 90;
+						console.log(vm.rotateDegree);
+						document.getElementById('full-domino').style.transform = "rotate("+vm.rotateDegree+"deg)";
 						};
 
 					vm.rotateRight = function() {
-
+						console.log("rotate right");
+						vm.rotateDegree = vm.rotateDegree + 90;
+						document.getElementById('full-domino').style.transform = "rotate("+vm.rotateDegree+"deg)";
 						};
-					vm.ranger = document.getElementById('range');
-					vm.fulldomino = document.getElementById('full-domino');
-					var width = vm.fulldomino.width;
-					var height = vm.fulldomino.height;
-/*					vm.ranger.onchange = function() {
-						vm.fulldomino.width = width*(vm.ranger.value / 100);
-						vm.fulldomino.height = height*(vm.ranger.value /100);
 
-						};*/
-/*					vm.sizeChanger = function(size) {
-						var fulldomino = document.getElementById('full-domino');
-						var width = fulldomino.width;
-						var height = fulldomino.height;
-						fulldomino.width = width*(size / 100);
-						fulldomino.height = height*(size /100);
-					};*/
 
-					vm.speedChanger = function(speed) {
+					document.getElementById("speed").onchange = function() {
+						document.getElementById('full-domino').style.transition = vm.rotateSpeed+"ms ease all";
+					}
 
-						};
 
 				},
 				controllerAs: "dc"

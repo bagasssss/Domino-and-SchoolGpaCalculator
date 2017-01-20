@@ -6,6 +6,7 @@
 			var vm = this;
 			vm.grades = gpaService.grades;
 			var idForNewGrade =3;
+			var idForNewStudents = 5;
 			vm.averageGPA;
 
 			activate();
@@ -24,7 +25,7 @@
 						sumGpa+=vm.grades[i].students[s].gpa;
 					};
 				};
-				vm.averageGPA = sumGpa/numbersOfStudents;
+				vm.averageGPA = Math.round((sumGpa/numbersOfStudents) * 100) / 100;
 			};
 
 			vm.addGrade = function() {
@@ -81,26 +82,22 @@
 				};
 				calculateAvgGpa();
 			};
+
 			vm.addStudent = function(id, newStudent) {
 				for(var i=0; i<vm.grades.length; i++) {
 					if(vm.grades[i].id === id) {
-						vm.grades[i].students.push(newStudent);
+						var studentNew = {
+							name: newStudent.name,
+							gpa: newStudent.gpa,
+							id_s: idForNewStudents
+						}
+						vm.grades[i].students.push(studentNew);
+						studentNew++;
 						break;
 					}
 				};
 				calculateAvgGpa();
 			};
-
-
-
-
-
-
-
-
-
-
-
 		})
 
 })();

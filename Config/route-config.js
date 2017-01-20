@@ -3,7 +3,7 @@
 		.config( ['$urlRouterProvider', '$stateProvider',
 			function($urlRouterProvider, $stateProvider){
 
-			//$urlRouterProvider.otherwise('/domino');
+			$urlRouterProvider.otherwise('/domino');
 
 			$stateProvider
 				.state('domino',{
