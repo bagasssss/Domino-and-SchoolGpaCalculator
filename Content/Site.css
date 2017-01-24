@@ -1,6 +1,9 @@
 ﻿
 
-
+.grid {
+  width: 90%;
+  height: 250px;
+}
 
 
 .square {

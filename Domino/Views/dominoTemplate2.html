@@ -1,9 +1,9 @@
 
 
 <div class="my-top-buttons col-md-12">
-    <button type="button" class="btn btn-default" ng-click="dc.rotateLeft()">left 90%</button>
+    <button type="button" class="btn btn-default" ng-click="dc.rotateLeft()">left 90deg</button>
     <button type="button" class="btn btn-default" ng-click="dc.newDomino()">NEW DOMINO</button>
-    <button type="button" class="btn btn-default" ng-click="dc.rotateRight()">right 90%</button>
+    <button type="button" class="btn btn-default" ng-click="dc.rotateRight()">right 90deg</button>
 </div>
 
 <div class="row">
@@ -17,7 +17,7 @@
                     <!-- high part -->
                     <div>
                         <div class="main-square square-0" >
-                            <div class="square-container" ng-style="{width: dc.range, height: dc.raange}">
+                            <div class="square-container" ng-style="{width: dc.range, height: dc.range}">
                                 <div class="main-circle-container" >
                                     <div class="main-circle"   ng-style="{width: dc.range, height: dc.range, visibility: dc.domino[0][0][0] === 1 ? 'visible' : 'hidden'}"></div>
                                 </div>
