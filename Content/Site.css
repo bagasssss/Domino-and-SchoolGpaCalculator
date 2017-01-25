@@ -76,8 +76,25 @@
 #full-domino {
 	transition: 300ms ease all;
 	transform: rotate(0deg);
+    height: 600px;
+
 }
 
+#id0 {
+    visibility: hidden
+}
+#id1 {
+    visibility: visible
+}
+
+.allways-top {
+    position: relative;
+    z-index: 1000;
+}
+
+.my-top-buttons {
+    margin: 10px;
+}
 
 
 
