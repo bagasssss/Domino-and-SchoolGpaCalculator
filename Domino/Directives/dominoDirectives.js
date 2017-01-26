@@ -5,7 +5,7 @@
 		.directive("dominoDirective", function(dominoServices){
 			return {
 				restrict: "E",
-				templateUrl: "Domino/Views/dominoTemplate2.html",
+				templateUrl: "Domino/Views/dominoTemplate.html",
 				controller: function() {
 					var vm=this;
 
@@ -15,6 +15,7 @@
 					vm.maxRange = 70;
 
 					/*ROTATE attributes*/
+					vm.rotation;
 					vm.rotateDegree = 0;
 					vm.rotateSpeed = 250;
 					vm.minRotateSpeed = 10;
@@ -26,14 +27,14 @@
 					activate();
 
 					function activate() {
-						getDataFromFile()
+						getDataFromFile();
 						
 					};
 
 					function getDataFromFile() {
 						dominoServices.getData().success(function(data) {
 							vm.dominos = data;
-						})
+						});
 					};
 
 					vm.newDomino = function() {
@@ -44,24 +45,26 @@
 						if(vm.domino.length<2) {
 							vm.domino.push(vm.dominos[part]);
 						}
-					}
+					};
 
 
 
 					vm.rotateLeft = function () {
 						vm.rotateDegree = vm.rotateDegree - 90;
-						document.getElementById('full-domino').style.transform = "rotate("+vm.rotateDegree+"deg)";
+						vm.rotation =  "rotate("+vm.rotateDegree+"deg)";
 						};
 
 					vm.rotateRight = function() {
 						vm.rotateDegree = vm.rotateDegree + 90;
-						document.getElementById('full-domino').style.transform = "rotate("+vm.rotateDegree+"deg)";
+						vm.rotation =  "rotate("+vm.rotateDegree+"deg)";
 						};
 
 
 					document.getElementById("speed").onchange = function() {
-						document.getElementById('full-domino').style.transition = (vm.maxRotateSpeed-vm.rotateSpeed)+"ms ease all";
-					}
+						vm.transition = (vm.maxRotateSpeed-vm.rotateSpeed)+"ms ease all";
+					};
+
+
 
 
 				},

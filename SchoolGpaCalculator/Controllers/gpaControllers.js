@@ -33,6 +33,7 @@
 						}
 					}
 					dataToShow = m;
+					console.log(dataToShow);
 					
 				})
 			};

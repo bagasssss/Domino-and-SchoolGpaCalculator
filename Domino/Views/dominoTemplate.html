@@ -8,13 +8,14 @@
 
 <div class="row">
     <div class="col-md-10">
+
         <div class="row">
             <div class="col-md-12">
 
                     <!-- MAIN DOMINO -->
-                    <div id="full-domino">
-                        <div ng-repeat="domino in dc.domino" class="main-square square-0" ng-click="dc.chooseParts($index)">
-                            <div class="circle-container" ng-repeat="rows in domino">
+                    <div id="full-domino" ng-style="{transform: dc.rotation, transition: dc.transition }">
+                        <div ng-repeat="domino in dc.domino track by $index" class="main-square square-0" ng-click="dc.chooseParts($index)">
+                            <div class="circle-container" ng-repeat="rows in domino ">
                                 <div class="square-container" ng-repeat="row in rows track by $index" ng-style="{width: dc.range, height: dc.range}">
                                     <div class="main-circle-container">
                                         <div class="main-circle" ng-style="{width: dc.range, height: dc.range, visibility: {{row}} === 1 ? 'visible' : 'hidden'}"></div>
@@ -31,13 +32,13 @@
         <div>
             <div class="row">
                 <div class="col-md-12">
-                    <input id="ranger" type="range" min={{dc.minRange}} max={{dc.maxRange}} ng-model="dc.range" /> SIZE: {{dc.range}}
+                    <input id="ranger" type="range" min="{{dc.minRange}}" max="{{dc.maxRange}}" ng-model="dc.range" /> SIZE: {{dc.range}}
                     <hr />
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <input id="speed" type="range" min={{dc.minRotateSpeed}} max={{dc.maxRotateSpeed}} ng-model="dc.rotateSpeed"  /> SPEED: {{dc.rotateSpeed}}
+                    <input id="speed" type="range" min="{{dc.minRotateSpeed}}" max="{{dc.maxRotateSpeed}}" ng-model="dc.rotateSpeed"  /> SPEED: {{dc.rotateSpeed}}
                     <hr />
                 </div>
             </div>
@@ -52,7 +53,7 @@
             <div class="circle-container" ng-repeat="rows in domino">
                 <div class="square-container" ng-repeat="row in rows track by $index">
                     <div class="circle-container">
-                        <div class="circle" id = "id{{row}}"></div>
+                        <div class="circle" id="id{{row}}"></div>
                     </div>
                 </div>
             </div>
