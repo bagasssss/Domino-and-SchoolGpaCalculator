@@ -17,9 +17,10 @@
 					/*ROTATE attributes*/
 					vm.rotation;
 					vm.rotateDegree = 0;
-					vm.rotateSpeed = 250;
+					vm.rotateSpeed = 2000;
 					vm.minRotateSpeed = 10;
 					vm.maxRotateSpeed = 5000;
+					
 
 					vm.dominos = [];
 					vm.domino = [[[0,0,1],[0,1,0],[1,0,0]],[[0,0,1],[0,1,0],[1,0,0]]];
@@ -46,26 +47,6 @@
 							vm.domino.push(vm.dominos[part]);
 						}
 					};
-
-
-
-					vm.rotateLeft = function () {
-						vm.rotateDegree = vm.rotateDegree - 90;
-						vm.rotation =  "rotate("+vm.rotateDegree+"deg)";
-						};
-
-					vm.rotateRight = function() {
-						vm.rotateDegree = vm.rotateDegree + 90;
-						vm.rotation =  "rotate("+vm.rotateDegree+"deg)";
-						};
-
-
-					document.getElementById("speed").onchange = function() {
-						vm.transition = (vm.maxRotateSpeed-vm.rotateSpeed)+"ms ease all";
-					};
-
-
-
 
 				},
 				controllerAs: "dc"

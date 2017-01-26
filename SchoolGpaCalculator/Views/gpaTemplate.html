@@ -6,68 +6,48 @@
 
   <h2>Average GPA:  {{ctrl.averageGPA}}</h2>
 
-  <ul class="nav nav-tabs">
-    <li ng-repeat="g in ctrl.grades">
-    	<a data-toggle="tab"  ng-click="ctrl.showGrid(g.id)">
-    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)" class="btn btn-default btn-xs">  x</b>
-    	</a>
-    </li>
-    <li><a ng-click="ctrl.addGrade()">+</a></li>
-  </ul>
+		 	 <ul class="nav nav-tabs">
+		    	<li ng-repeat="g in ctrl.grades" class="{{g.activeTab}}">
+			    	<a data-toggle="tab"  ng-click="ctrl.showGrid(g.id)"  >
+			    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)" class="btn btn-default btn-xs">  x</b>
+			    	</a>
+		    	</li>
+		    	<li>
+		    		<a ng-click="ctrl.addGrade()">+</a>
+		    	</li>
+		  	</ul>
 
-  <div ng-repeat="g in ctrl.grades">
-  		
-  		<div ng-show="g.show">
-  		
-  		<div class="panel panel-body">
-  			Grade <input name="Grade Name" ng-model="g.grade">
-  		</div>
+		  	<div ng-repeat="g in ctrl.grades">
+		  		<div ng-show="g.show">
+			  		<div class="panel panel-body">
+			  			Grade <input name="Grade Name" ng-model="g.grade">
+			  		</div>
+				</div>	
+			</div>
 
-		  <table class="table">
-		  		<thead>
-		  			<tr>
-		  				<th class="col-md-8">Name</th>
-		  				<th class="col-md-2">GPA</th>
-		  				<th class="col-md-2"></th>
-		  			</tr>
-		  		</thead>
-		  		<tbody>
-		  			<tr ng-repeat="students in g.students">
-		  				<td>
-		  					{{students.name}}
-		  				</td>
-		  				<td>
-		  					{{students.gpa}}
-		  				</td>
-		  				<td>
-		  					<a class="btn btn-default" ng-click="ctrl.deleteStudent(g.id, students.name)">X</a>
-		  				</td>
-		  			</tr>
-		  		</tbody>
-			  </table>
-			  	<!-- FORM FOR NEW STUDENTЕ -->
-			  		<form class="form-inline" name="newStudentForm">
-		  				<div class="form-group col-md-8">
-		  					<input type="text" name="Name" class="form-control " required ng-model="newStudent.name">
-		  				</div>
-		  				<div class="form-group col-md-2" >
-		  					<input type="number" name="GPA" class="form-control" required ng-model="newStudent.gpa" min="1" max="5">
-		  				</div>
-		  				<div class="form-group col-md-2">
-		  					<a class="btn btn-default" ng-click="ctrl.addStudent(g.id, newStudent)" ng-disabled="newStudentForm.$invalid">add new</a>
-		  				</div>
-		  			</form>
+			<div>
+				<div class="panel panel-body">
+					<div ui-grid="ctrl.gridOptions" class="grid"></div>
+				</div>
 
-			 </div>
-
-			
-	</div>
-	
+				<div class="panel panel-body" ng-show=ctrl.showForm>
+						<form class="form-inline" name="newStudentForm">
+			  				<div class="form-group col-md-8">
+			  					<input type="text" name="Name" class="form-control " required ng-model="newStudent.name" placeholder="enter students first and last name">
+			  				</div>
+			  				<div class="form-group col-md-2" >
+			  					<input type="number" name="GPA" class="form-control" required ng-model="newStudent.gpa" min="1" max="5" placeholder="gpa 1-5">
+			  				</div>
+			  				<div class="form-group col-md-2">
+			  					<a class="btn btn-default" ng-click="ctrl.addStudent(newStudent); newStudent.gpa = ''; newStudent.name = ''" ng-disabled="newStudentForm.$invalid">add new</a>
+			  				</div>
+			  			</form>
+				</div>
+			</div>
+				
 	 
 </div>
 
-<div class="panel">
-		<div ui-grid="ctrl.gridOptions" class="grid"></div>
-	</div>
+
 
 

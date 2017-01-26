@@ -1,9 +1,9 @@
 
 
 <div class="my-top-buttons col-md-12">
-    <button type="button" class="btn btn-default allways-top" ng-click="dc.rotateLeft()">left 90°</button>
+    <button type="button" class="btn btn-default allways-top" ng-click="dc.rotateDegree = dc.rotateDegree-90">left 90°</button>
     <button type="button" class="btn btn-default allways-top" ng-click="dc.newDomino()">NEW DOMINO</button>
-    <button type="button" class="btn btn-default allways-top" ng-click="dc.rotateRight()">right 90°</button>
+    <button type="button" class="btn btn-default allways-top" ng-click="dc.rotateDegree = dc.rotateDegree+90">right 90°</button>
 </div>
 
 <div class="row">
@@ -13,12 +13,14 @@
             <div class="col-md-12">
 
                     <!-- MAIN DOMINO -->
-                    <div id="full-domino" ng-style="{transform: dc.rotation, transition: dc.transition }">
-                        <div ng-repeat="domino in dc.domino track by $index" class="main-square square-0" ng-click="dc.chooseParts($index)">
-                            <div class="circle-container" ng-repeat="rows in domino ">
-                                <div class="square-container" ng-repeat="row in rows track by $index" ng-style="{width: dc.range, height: dc.range}">
-                                    <div class="main-circle-container">
-                                        <div class="main-circle" ng-style="{width: dc.range, height: dc.range, visibility: {{row}} === 1 ? 'visible' : 'hidden'}"></div>
+                    <div id="full-domino">
+                        <div  ng-style="{transform: 'rotate(' + dc.rotateDegree + 'deg)', transition:  dc.maxRotateSpeed - dc.rotateSpeed + 'ms ease all' }">
+                            <div ng-repeat="domino in dc.domino track by $index" class="main-square square-0" ng-click="dc.chooseParts($index)">
+                                <div class="circle-container" ng-repeat="rows in domino ">
+                                    <div class="square-container" ng-repeat="row in rows track by $index" ng-style="{width: dc.range, height: dc.range}">
+                                        <div class="main-circle-container">
+                                            <div class="main-circle" ng-style="{width: dc.range, height: dc.range, visibility: {{row}} === 1 ? 'visible' : 'hidden'}"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

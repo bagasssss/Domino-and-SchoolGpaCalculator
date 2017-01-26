@@ -10,7 +10,9 @@
 			vm.averageGPA;
 			var idForNewGrade =3;
 			var idForNewStudents = 5;
-			var dataToShow = [];
+			var dataToShow = []; //list of students for each grades
+			vm.showForm = false;
+			vm.currentGrade;
 
 
 			activate();
@@ -24,19 +26,32 @@
 				gpaService.getData().success(function(data) {
 					vm.grades = data;
 					calculateAvgGpa();
-					//addStudentsToGradeArray(0);
-
-					var m=[];
-					for(var t=0;t<data.length;t++) {
-						for(var r=0; r<data[t].students.length; r++) {
-							m.push(data[t].students[r]);
-						}
-					}
-					dataToShow = m;
+					addStudentsToGradeArray(0);
 					console.log(dataToShow);
+					vm.gridOptions.data = dataToShow;
 					
 				})
 			};
+
+
+			vm.gridOptions = {
+		        columnDefs: [{
+		            field: 'name',
+		            displayName: 'Name' },
+		        {   field: 'gpa',
+		            displayName: 'GPA' }, 
+		        {
+		            field: 'Delete student',
+		            cellTemplate: '<button id="editBtn" type="button" class="btn-small " ng-click="grid.appScope.deleteRow(row)" >X</button> '
+		        }]
+	    	};
+	    	// because of ControllerAs syntax
+	    	vm.gridOptions.appScopeProvider = vm;
+
+	    	vm.deleteRow = function(row) {
+	    		deleteStudentFromGrade(vm.currentGrade, row.entity.name);
+	    		removeStudentFromGradeArray(row.entity.name);
+	    	};
 			
 
 			function calculateAvgGpa() {
@@ -52,6 +67,11 @@
 				avgp = Math.round((sumGpa/numbersOfStudents) * 100) / 100;
 				if(isNaN(avgp)) {
 					vm.averageGPA = "no students";
+					dataToShow = [];
+					vm.gridOptions.data = dataToShow;
+					if(vm.grades.length < 1) {
+						vm.showForm = false;
+					}
 				} else {
 					vm.averageGPA = avgp;
 				}
@@ -65,21 +85,18 @@
 					grade: "new Grade",
 					students: [],
 					id: idForNewGrade,
-					show: false
+					show: false,
+					
 				}
 				vm.grades.push(newGrade);
 				idForNewGrade++;
-
-				console.log("grade added");
 			};
 
 			vm.deleteGrade = function(idd) {
 				if(confirm("are you sure?")){
 					for(var i=0; i<vm.grades.length; i++) {
 						if(vm.grades[i].id === idd) {
-
 							vm.grades.splice(i, 1);
-							console.log("grade deleted..")
 							break;
 						};
 					};
@@ -95,16 +112,17 @@
 			vm.showGrid = function(gradeId) {
 				for(var i=0; i<vm.grades.length; i++) {
 						if(vm.grades[i].id === gradeId) {
-
 							vm.grades[i].show = true;
-							console.log("show changed..")
 						} else {
 							vm.grades[i].show = false;
+							
 						};
 					};
 					addStudentsToGradeArray(gradeId);
+					vm.showForm =true;
+					vm.currentGrade = gradeId;
 			};
-
+			// add list of students to dataToShow and ui-grid data
 			function addStudentsToGradeArray(gradeId) {
 				var st = [];
 				for(var i=0; i<vm.grades.length; i++) {
@@ -117,18 +135,29 @@
 
 							st.push(student);
 						};
-						/*st.push(vm.grades[i].students);
-						break;*/
+						break;
 						
 					};
 				};
 				
 				dataToShow = st;
 				console.log(dataToShow)
+				vm.gridOptions.data = dataToShow;
+			};
 
-			}
+			//remove student from dataToShow and ui-grade data
+			function removeStudentFromGradeArray(name) {
+				for(var i=0; i<dataToShow.length; i++) {
+					if(dataToShow[i].name === name) {
+						dataToShow.splice(i,1);
+						break;
+					}
+				}
+				vm.gridOptions.data = dataToShow;
+			};
 
-			vm.deleteStudent = function(id, name) {
+			// remove student from vm.grade
+			function deleteStudentFromGrade(id, name) {
 				for(var i=0; i<vm.grades.length; i++){
 					if(vm.grades[i].id === id){
 						for(var s=0; s<vm.grades[i].students.length; s++) {
@@ -146,9 +175,9 @@
 				calculateAvgGpa();
 			};
 
-			vm.addStudent = function(id, newStudent) {
+			vm.addStudent = function(newStudent) {
 				for(var i=0; i<vm.grades.length; i++) {
-					if(vm.grades[i].id === id) {
+					if(vm.grades[i].id === vm.currentGrade) {
 						var studentNew = {
 							name: newStudent.name,
 							gpa: newStudent.gpa,
@@ -159,76 +188,15 @@
 						break;
 					}
 				};
+
+				dataToShow.push({name: newStudent.name, gpa: newStudent.gpa});
+				vm.gridOptions.dataToShow = dataToShow;
 				calculateAvgGpa();
-			};
 
-			vm.gridOptions = {};
-			vm.gridOptions.columnDefs = [
-				{field: 'name'},
-				{field: 'gpa'},
-				{name: ' ', celltemplate: '<button class="btn primary" ng-click="ctrl.deleteStudent()">Delete</button>'}
-			];
-/*			vm.gridOptions.data = [
-				{"name": "Vasya Pupkin", "gpa": 4.8, "id_s": 1}
-			];
-*/
-			vm.gridOptions.data = dataToShow;
-
-		})
-
-/*		.controller("studentsCtrl", function(gpaService){
-
-			var vm=this;
-
-			vm.grades;
-			vm.students;
-			vm.averageGPA;
-
-			var idForNewStudent = 5;
-
-			activate();
-
-			function activate() {
-				getDataFromFile();
-			};
-
-			function getDataFromFile() {
-				gpaService.getData().success(function(data) {
-					vm.students = data;
-					calculateAvgGpa();
-					getUniqueGrades();
-				})
-			};
-
-			function getUniqueGrades() {
-				var uGrades = [];
-				for(var i=0; i<vm.students.length; i++) {
-					for(var g=0; g<uGrades.length; g++) {
-						if(vm.students[i].grade !=== uGrades[g]) {
-							uGrades.push(vm.students[i].grade);
-						}
-					}
-				}
-				vm.gardes = uGrades;
-			};
-
-			function calculateAvgGpa() {
-				var numbersOfStudents = 0;
-				var sumGpa = 0;
-				for(var i=0; i<vm.students; i++) {
-					numbersOfStudents++;
-					sumGpa+=vm.students[i].gpa;
-				}
-				vm.averageGPA = Math.round((sumGpa/numbersOfStudents) * 100) / 100;
 			};
 
 
+    })
 
-
-
-
-			
-
-		})*/
 
 })();
