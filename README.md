@@ -29,7 +29,7 @@ SPA with two menu: domino builder (pure CSS) and tables for school grades and av
 
 ### GPA calculator functionality
 - add new grades
-- edit ar delete of existing grade
+- edit or delete an existing grade
 - add student for any grade
 - dinamically calculating of average GPA
 
