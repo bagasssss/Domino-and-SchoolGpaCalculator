@@ -18,7 +18,7 @@ SPA with two menu: domino builder (pure CSS) and tables for school grades and av
 ### Domino functionality
 - ability to create new domino
 - available domino parts in right part of screen. Just push on any for new domino creating
-- ability to turn main domino to the right or tp the left
+- ability to turn main domino to the right or left
 - crawler to change size of main domino
 - crawler to change speed fo turning of main domino
 
