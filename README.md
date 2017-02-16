@@ -11,7 +11,7 @@ SPA with two menu: domino builder (pure CSS) and tables for school grades and av
 - ui-grid
 
 # ------------
-### Domino
+# Domino
 
 ![Alt text](https://github.com/bagasssss/Domino-and-SchoolGpaCalculator/blob/master/screenshots/domino.jpg "Main")
 
@@ -23,7 +23,7 @@ SPA with two menu: domino builder (pure CSS) and tables for school grades and av
 - crawler to change speed of turning of main domino
 
 # ----------
-### GPA calculator
+# GPA calculator
 
 ![Alt text](https://github.com/bagasssss/Domino-and-SchoolGpaCalculator/blob/master/screenshots/gpa.jpg "Main")
 
