@@ -45,6 +45,7 @@
 		            cellTemplate: '<button id="editBtn" type="button" class="btn-small " ng-click="grid.appScope.deleteRow(row)" >X</button> '
 		        }]
 	    	};
+	    	
 	    	// because of ControllerAs syntax
 	    	vm.gridOptions.appScopeProvider = vm;
 

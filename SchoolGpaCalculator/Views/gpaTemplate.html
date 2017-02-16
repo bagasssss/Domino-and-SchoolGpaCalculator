@@ -6,7 +6,7 @@
 
   <h2>Average GPA:  {{ctrl.averageGPA}}</h2>
 
-		 	 <ul class="nav nav-tabs">
+		 	<ul class="nav nav-tabs">
 		    	<li ng-repeat="g in ctrl.grades" class="{{g.activeTab}}">
 			    	<a data-toggle="tab"  ng-click="ctrl.showGrid(g.id)"  >
 			    		{{g.grade}}  <b ng-click="ctrl.deleteGrade(g.id)" class="btn btn-default btn-xs">  x</b>
